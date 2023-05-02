@@ -1,6 +1,8 @@
 import { Route } from "react-router-dom";
 import "./App.css";
 import Login from "./Login";
+import FriendsList from "./FriendsList";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -12,14 +14,24 @@ function App() {
           </span>
 
           <ul className="flex flex-row text-white gap-5">
-            <li className=" p-6 bg-black">LOGIN.</li>
-            <li className=" p-6 bg-black">FRIENDLIST.</li>
-            <li className=" p-6 bg-black">ADDFRIEND.</li>
-            <li className=" p-6 bg-black">LOGUT</li>
+            <li className=" p-6 bg-black">
+              {" "}
+              <Link to="/login">LOGIN.</Link>
+            </li>
+            <li className=" p-6 bg-black">
+              <Link to="/friends">FRIENDLIST.</Link>
+            </li>
+            <li className=" p-6 bg-black">
+              <Link to="/addfriend">ADDFRIEND.</Link>
+            </li>
+            <li className=" p-6 bg-black">
+              <Link to="/logout">LOGUT</Link>
+            </li>
           </ul>
         </nav>
       </header>
       <Route exact path={["/", "/login"]} component={Login} />
+      <Route exact path="/friends" component={FriendsList} />
     </div>
   );
 }

@@ -12,6 +12,8 @@ export default function Login() {
 
   const history = useHistory();
 
+  //localStorage.clear();
+
   function onSubmit(data) {
     axios
       .post("http://localhost:9000/api/login", data)
@@ -19,7 +21,7 @@ export default function Login() {
         if (res.status === 200) {
           console.log(res);
           localStorage.setItem("friends_token", res.data.token);
-          history.push("/login");
+          history.push("/friends");
         }
       })
       .catch((error) => console.log(error.response));
