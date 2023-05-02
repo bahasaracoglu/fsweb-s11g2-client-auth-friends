@@ -3,6 +3,7 @@ import "./App.css";
 import Login from "./Login";
 import FriendsList from "./FriendsList";
 import { Link } from "react-router-dom";
+import AddFriend from "./AddFriend";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
               <Link to="/friends">FRIENDLIST.</Link>
             </li>
             <li className=" p-6 bg-black">
-              <Link to="/addfriend">ADDFRIEND.</Link>
+              <Link to="/friends/add">ADDFRIEND.</Link>
             </li>
             <li className=" p-6 bg-black">
               <Link to="/logout">LOGUT</Link>
@@ -32,6 +33,7 @@ function App() {
       </header>
       <Route exact path={["/", "/login"]} component={Login} />
       <Route exact path="/friends" component={FriendsList} />
+      <Route exact path="/friends/add" component={AddFriend} />
     </div>
   );
 }
