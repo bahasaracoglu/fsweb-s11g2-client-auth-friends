@@ -1,4 +1,4 @@
-import { axiosWithAuth } from "./axiosAuth";
+import { axiosWithAuth } from "../axiosAuth";
 
 const Logout = () => {
   axiosWithAuth()

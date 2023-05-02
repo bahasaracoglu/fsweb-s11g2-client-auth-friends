@@ -1,12 +1,12 @@
 import { Route } from "react-router-dom";
 import "./App.css";
-import Login from "./Login";
-import FriendsList from "./FriendsList";
+import Login from "./components/Login";
+import FriendsList from "./components/FriendsList";
 import { Link } from "react-router-dom";
-import AddFriend from "./AddFriend";
+import AddFriend from "./components/AddFriend";
 
 import PrivateRoute from "./PrivateRoute";
-import Logout from "./Logout";
+import Logout from "./components/Logout";
 
 function App() {
   return (
