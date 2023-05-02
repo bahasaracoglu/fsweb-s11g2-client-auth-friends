@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import AddFriend from "./AddFriend";
 import axios from "axios";
 import { axiosWithAuth } from "./axiosAuth";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
   const logout = () => {
@@ -47,8 +48,8 @@ function App() {
         </nav>
       </header>
       <Route exact path={["/", "/login"]} component={Login} />
-      <Route exact path="/friends" component={FriendsList} />
-      <Route exact path="/friends/add" component={AddFriend} />
+      <PrivateRoute exact path="/friends" component={FriendsList} />
+      <PrivateRoute exact path="/friends/add" component={AddFriend} />
     </div>
   );
 }
