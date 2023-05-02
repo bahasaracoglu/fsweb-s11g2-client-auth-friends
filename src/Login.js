@@ -1,14 +1,10 @@
 import axios from "axios";
-import { useState } from "react";
+
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
 export default function Login() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const history = useHistory();
 

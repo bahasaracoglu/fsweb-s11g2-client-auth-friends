@@ -1,29 +1,16 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { axiosWithAuth } from "./axiosAuth";
 
 export default function FriendsList() {
   const [list, setList] = useState([]);
-  //const list = [{ name: "BAHA", mail: "BAHA@ASDASD.COM" }];
-
-  const myToken = localStorage.getItem("friends_token");
-
-  const auth = {
-    headers: {
-      Authorization: myToken,
-    },
-  };
-
-  console.log(myToken);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:9000/api/friends", auth)
+    axiosWithAuth()
+      .get("http://localhost:9000/api/friends")
       .then((res) => {
         if (res.status === 200) {
           console.log(res);
-
           setList(res.data);
-          //history.push("/friends");
         }
       })
       .catch((error) => console.log(error.response));

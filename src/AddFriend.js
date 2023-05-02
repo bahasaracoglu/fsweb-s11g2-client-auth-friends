@@ -1,19 +1,12 @@
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { axiosWithAuth } from "./axiosAuth";
 import { nanoid } from "nanoid";
 
 export default function AddFriend() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const history = useHistory();
-
-  //api/friends
 
   const randomAge = () => {
     return Math.floor(75 * Math.random());
@@ -34,7 +27,7 @@ export default function AddFriend() {
         if (res.status === 200) {
           console.log(res);
 
-          //history.push("/friends");
+          history.push("/friends");
         }
       })
       .catch((error) => console.log(error.response));
