@@ -34,10 +34,13 @@ export default function FriendsList() {
       <h2 className="text-8xl mb-5 ">FRIENDS LIST</h2>
       <ul className="text-left">
         {list.map((char, i) => (
-          <li
-            key={i}
-            className="mb-4"
-          >{`-${char.name.toUpperCase()} - ${char.email.toUpperCase()}`}</li>
+          <li key={i} className="mb-4">{`-${
+            char.name && char.name.toUpperCase()
+          } - 
+          ${
+            //char.mail || c ? char.mail.toUpperCase() : char.email.toUpperCase()
+            char.id
+          }`}</li>
         ))}
       </ul>
     </div>
