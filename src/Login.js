@@ -1,14 +1,40 @@
+import axios from "axios";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
 export default function Login() {
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
 
+  const history = useHistory();
+
+  function onSubmit(data) {
+    axios
+      .post("http://localhost:9000/api/login", data)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res);
+          localStorage.setItem("friends_token", res.data.token);
+          history.push("/login");
+        }
+      })
+      .catch((error) => console.log(error.response));
+  }
+
+  //console.log(userCredentials);
+
+  /*
+  const login = () => {
+    axios.post("endpoint/here", data).then((res) => {
+      console.log(res);
+      localStorage.setItem("token", res.data.token);
+      //props.history.push("/dashboard");
+    });
+  };*/
   return (
     <div className={"font-black text-3xl mx-auto w-1/2 min-w-fit mt-20"}>
       <h2 className="text-8xl mb-5 ">LOGIN</h2>
