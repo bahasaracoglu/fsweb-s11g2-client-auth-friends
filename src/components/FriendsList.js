@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { axiosWithAuth } from "../axiosAuth";
 import { Link } from "react-router-dom";
-import PrivateRoute from "../PrivateRoute";
-import FriendInfo from "./FriendInfo";
 
 export default function FriendsList() {
   const [list, setList] = useState([]);
