@@ -7,6 +7,7 @@ import AddFriend from "./components/AddFriend";
 
 import PrivateRoute from "./PrivateRoute";
 import Logout from "./components/Logout";
+import FriendInfo from "./components/FriendInfo";
 
 function App() {
   return (
@@ -19,7 +20,6 @@ function App() {
 
           <ul className="flex flex-row text-white gap-5">
             <li className=" p-6 bg-black">
-              {" "}
               <Link to="/login">LOGIN.</Link>
             </li>
             <li className=" p-6 bg-black">
@@ -37,6 +37,8 @@ function App() {
       <Route exact path={["/", "/login"]} component={Login} />
       <PrivateRoute exact path="/friends" component={FriendsList} />
       <PrivateRoute exact path="/friends/add" component={AddFriend} />
+      <PrivateRoute exact path="/friends/id/:slug" component={FriendInfo} />
+      <PrivateRoute exact path="/logout" component={Logout} />
     </div>
   );
 }

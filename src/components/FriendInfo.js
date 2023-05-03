@@ -1,29 +1,44 @@
-// import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { axiosWithAuth } from "../axiosAuth";
 
-// export default function FriendInfo(props) {
-//   const { list } = props;
-//   const { charId } = useParams();
-//   const [char, setChar] = useState();
+export default function FriendInfo() {
+  const [char, setChar] = useState({});
+  const { slug } = useParams();
 
-//   console.log(list);
-//   console.log(charId);
-//   //let history = useHistory();
+  console.log(slug);
+  let history = useHistory();
 
-//   /*function handleGeriGit() {
-//       history.push("/blog");
-//     }*/
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`http://localhost:9000/api/friends/${slug}`)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res);
+          setChar(res.data);
+        }
+      })
+      .catch((error) => console.log(error.response));
+  }, []);
 
-//   useEffect(() => {
-//     list.find((char) => (char.id === charId ? setChar(char) : ""));
-//   }, [charId]);
-
-//   return (
-//     <div>
-//       <h2>{char.name}</h2>
-//       <h2>{char.age}</h2>
-//       <h2>{char.email}</h2>
-//     </div>
-//   );
-// }
+  return (
+    <div className="font-black text-3xl mx-auto w-1/2 min-w-fit mt-20">
+      <h2 className="text-8xl mb-5 ">CHARACTER INFO</h2>
+      <ul className="flex flex-col  justify-center align-center mx-auto w-2/3">
+        <li className="mb-4 flex justify-between ">
+          NAME:
+          <h2 className="">{char.name}</h2>
+        </li>
+        <li className="mb-4 flex justify-between ">
+          AGE:
+          <h2>{char.age}</h2>
+        </li>
+        <li className="mb-4 flex justify-between ">
+          EMAIL
+          <h2>{char.email}</h2>
+        </li>
+      </ul>
+    </div>
+  );
+}

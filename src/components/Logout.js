@@ -10,6 +10,11 @@ const Logout = () => {
       }
     })
     .catch((error) => console.log(error.response));
+  return (
+    <div className={"font-black text-3xl mx-auto w-1/2 min-w-fit mt-20"}>
+      <h2>YOU ARE NOW LOGGED OUT!</h2>
+    </div>
+  );
 };
 
 export default Logout;
